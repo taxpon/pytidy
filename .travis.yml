@@ -27,7 +27,7 @@ stages:
   - check
   - test
   - name: release
-    if: branch = master
+    if: branch = master AND type != pull_request
 
 after_success:
   - coveralls
