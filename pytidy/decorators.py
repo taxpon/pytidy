@@ -1,6 +1,6 @@
-from pytidy.registry import Registry
-from typing import Type, Dict
+from typing import Dict, Type
 
+from pytidy.registry import Registry
 
 _reg: Registry = Registry.get_instance()
 

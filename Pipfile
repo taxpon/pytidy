@@ -9,6 +9,8 @@ flake8 = "*"
 coveralls = "*"
 coverage = "*"
 pytest-cov = "*"
+mypy = "*"
+isort = "*"
 
 [packages]
 
@@ -16,4 +18,5 @@ pytest-cov = "*"
 python_version = "3.7"
 
 [scripts]
-flake8 = "flake8 --ignore E501 pytidy && flake8 --ignore E501 tests"
+fmt = "isort -rc pytidy"
+check = "flake8 --ignore E501 pytidy && flake8 --ignore E501 tests && mypy pytidy"
