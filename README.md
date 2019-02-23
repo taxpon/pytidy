@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.org/taxpon/pytidy.svg?branch=develop)](https://travis-ci.org/taxpon/pytidy)
 # Pytidy
 A type hint based dependency injection library for python language (+3.6). While there are already several DI libraries for python, this library is inspired by Java Spring and aims to provide similar interface and functionality to Java Spring.   
 

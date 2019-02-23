@@ -11,4 +11,6 @@ install:
 script:
   - flake8 --ignore E501 pytidy
   - flake8 --ignore E501 tests
-  - pytest
+  - pytest --cov=pytidy
+after_success:
+  - coveralls
