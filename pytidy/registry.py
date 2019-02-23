@@ -1,4 +1,3 @@
-from __future__ import annotations  # TODO: Limited to python3.7
 from typing import ClassVar, Dict, Type, TypeVar
 from pytidy.error import RegistrationError, RetrievingError
 
@@ -10,11 +9,11 @@ T = TypeVar('T')
 
 
 class Registry:
-    __instance: Registry = None
+    __instance: "Registry" = None
     klasses: ClassVar[Dict[str, object]] = {}
 
     @staticmethod
-    def get_instance() -> Registry:
+    def get_instance() -> "Registry":
         if Registry.__instance is None:
             Registry.__instance = Registry()
         return Registry.__instance
