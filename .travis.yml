@@ -1,0 +1,33 @@
+language: python
+sudo: required
+dist: xenial
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8-dev"
+install:
+  - pip install pipenv
+  - pipenv install --dev --system
+
+jobs:
+  include:
+    - stage: check
+      script: flake8 --ignore E501 pytidy
+    - stage: check
+      script: flake8 --ignore E501 tests
+    - stage: check
+      script: mypy pytidy
+    - stage: release
+      python: 3.7
+      script: "echo !!release!!"
+
+script: pytest --cov=pytidy
+
+stages:
+  - check
+  - test
+  - name: release
+    if: branch = master AND type != pull_request
+
+after_success:
+  - coveralls

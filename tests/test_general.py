@@ -1,4 +1,4 @@
-from pytidy.decorators import component, autowired
+from pytidy.decorators import autowired, component
 
 
 @component
@@ -16,5 +16,6 @@ class B:
         return self.a.get()
 
 
-b = B()
-print(b.get())  # a
+def test_properly_working():
+    b = B()
+    assert b.get() == "a"

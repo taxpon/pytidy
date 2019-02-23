@@ -4,8 +4,19 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [dev-packages]
+pytest = "*"
+flake8 = "*"
+coveralls = "*"
+coverage = "*"
+pytest-cov = "*"
+mypy = "*"
+isort = "*"
 
 [packages]
 
 [requires]
 python_version = "3.7"
+
+[scripts]
+fmt = "isort -rc pytidy"
+check = "flake8 --ignore E501 pytidy && flake8 --ignore E501 tests && mypy pytidy"
