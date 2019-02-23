@@ -1,0 +1,14 @@
+language: python
+sudo: required
+dist: xenial
+python:
+  - "3.6"
+  - "3.7"
+  - "3.8-dev"
+install:
+  - pip install pipenv
+  - pipenv install --dev --system
+script:
+  - flake8 --ignore E501 pytidy
+  - flake8 --ignore E501 tests
+  - pytest
