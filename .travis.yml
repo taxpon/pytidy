@@ -14,16 +14,18 @@ jobs:
     - stage: check
       script: flake8 --ignore E501 pytidy
     - stage: check
-      script: flake8 --ignore tests
+      script: flake8 --ignore E501 tests
     - stage: check
       script: mypy pytidy
-    - stage: test
-      script: pytest --cov=pytidy
     - stage: release
       python: 3.7
       script: "echo !!release!!"
 
+script: pytest --cov=pytidy
+
 stages:
+  - check
+  - test
   - name: release
     if: branch = master
 
