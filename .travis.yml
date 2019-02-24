@@ -17,20 +17,36 @@ jobs:
       script: flake8 --ignore E501 tests
     - stage: check
       script: mypy pytidy
-    - stage: release
-      python: 3.7
-      script: "echo !!release!!"
 
 script: pytest --cov=pytidy
+
+after_success:
+  - coveralls
+
+before_deploy:
+  - git config --local user.name "taxpon"
+  - git config --local user.email "taxpon@gmail.com"
+  - export RELEASE_TAG=$(bash scripts/get_version.sh)
+  - git tag $RELEASE_TAG
+
+deploy:
+  - provider: script
+    script: bash scripts/release.sh
+    on:
+      branch: master
+
+after_deploy:
+  - git checkout develop
+  - bash scripts/update_version.sh
+  - git commit -a -m "Update version"
+  - git push origin develop
+  - git push origin --tags
 
 stages:
   - check
   - test
-  - name: release
+  - name: deploy
     if: branch = master AND type != pull_request
-
-after_success:
-  - coveralls
 
 notifications:
   email: false
