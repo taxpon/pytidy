@@ -1,4 +1,4 @@
-__version__ = "0.2.0"
+__version__ = "0.3.0"
 
 __title__ = "pytidy"
 __description__ = "Dependency Injection library based on type hints"
