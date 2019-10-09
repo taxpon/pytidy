@@ -28,7 +28,6 @@ before_deploy:
   - git config --local user.email "taxpon@gmail.com"
   - export RELEASE_TAG=$(bash scripts/get_version.sh)
   - git tag $RELEASE_TAG
-  - bash scripts/package.sh
 
 deploy:
   - provider: pypi
