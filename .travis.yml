@@ -28,10 +28,13 @@ before_deploy:
   - git config --local user.email "taxpon@gmail.com"
   - export RELEASE_TAG=$(bash scripts/get_version.sh)
   - git tag $RELEASE_TAG
+  - bash scripts/package.sh
 
 deploy:
-  - provider: script
-    script: bash scripts/release.sh
+  - provider: pypi
+    user: ${PYPI_USERNAME}
+    password: ${PYPI_PASSWORD}
+    distributions: "sdist bdist_wheel"
     on:
       branch: master
 
