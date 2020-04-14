@@ -6,7 +6,7 @@ from pytidy.error import RegistrationError, RetrievingError
 logger = getLogger(__file__)
 
 
-T = TypeVar('T')
+T = TypeVar("T")
 
 
 class Registry:
@@ -30,7 +30,8 @@ class Registry:
     def register(self, klass: Type):
         name: str = self.__get_name(klass)
         if name in self.__klasses:
-            raise RegistrationError("Already registered class: {}".format(name))
+            raise RegistrationError(
+                "Already registered class: {}".format(name))
         obj = klass()
         self.__klasses[name] = obj
         logger.debug("{} is successfully registered to registry".format(name))
@@ -42,7 +43,9 @@ class Registry:
 
         obj: object = self.__klasses[name]
         if not isinstance(obj, klass):
-            raise RetrievingError("Registered object is not compatible with {}".format(name))
+            raise RetrievingError(
+                "Registered object is not compatible with {}".format(name)
+            )
         return obj
 
     def __get_name(self, klass: Type) -> str:

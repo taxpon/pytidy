@@ -10,7 +10,6 @@ if sys.version_info[1] >= 7:
         def get(self):
             return "c"
 
-
     @autowired_cls
     @dataclass
     class D:
@@ -18,7 +17,6 @@ if sys.version_info[1] >= 7:
 
         def get(self):
             return self.c.get()
-
 
     def test_class_is_inserted_to_dataclass():
         obj = D()

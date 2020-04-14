@@ -1,4 +1,4 @@
-from typing import Dict, Type, ClassVar
+from typing import ClassVar, Dict, Type
 
 from pytidy.registry import Registry
 
@@ -13,6 +13,7 @@ def autowired(func):
             if arg_name not in "return":
                 kwargs[arg_name] = _reg.get(klass)
         return func(*args, **kwargs)
+
     return wrapped
 
 
