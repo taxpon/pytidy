@@ -10,9 +10,16 @@ def autowired(func):
     def wrapped(*args, **kwargs):
         arg_defs: Dict[str, Type] = func.__annotations__
         for arg_name, klass in arg_defs.items():
-            kwargs[arg_name] = _reg.get(klass)
+            if arg_name not in "return":
+                kwargs[arg_name] = _reg.get(klass)
         return func(*args, **kwargs)
+
     return wrapped
+
+
+def autowired_cls(cls):
+    setattr(cls, "__init__", autowired(getattr(cls, "__init__")))
+    return cls
 
 
 def component(cls):
