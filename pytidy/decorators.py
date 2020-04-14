@@ -1,4 +1,4 @@
-from typing import ClassVar, Dict, Type
+from typing import Dict, Type
 
 from pytidy.registry import Registry
 
@@ -17,7 +17,7 @@ def autowired(func):
     return wrapped
 
 
-def autowired_cls(cls: ClassVar):
+def autowired_cls(cls):
     setattr(cls, "__init__", autowired(getattr(cls, "__init__")))
     return cls
 
