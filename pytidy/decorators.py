@@ -1,4 +1,3 @@
-from dataclasses import dataclass
 from typing import Dict, Type, ClassVar
 
 from pytidy.registry import Registry
