@@ -2,7 +2,7 @@
 # Pytidy
 A type hint based dependency injection library for python language (+3.6). While there are already several DI libraries for python, this library is inspired by Java Spring and aims to provide similar interface and functionality to Java Spring.
 
-Supports Python3.6, 3.7 and 3.8.
+Supports Python 3.7 and 3.8.
 
 # Usage
 Super simple. Attach `@component` decorator to any classes which need to be injected in somewhere constructor, and attach `@autowired` decorator to constructors which need dependency injection.
